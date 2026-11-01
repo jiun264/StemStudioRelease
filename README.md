@@ -1,19 +1,20 @@
 # StemStudio
 
-**Windows 桌面音訊分軌工具**：將音訊分離為人聲、吉他、貝斯與鼓，並支援貼上公開音訊網址，下載後加入處理佇列。
+**Windows 桌面音訊分軌工具**：分離人聲、吉他、貝斯、鼓與鋼琴，或移除指定樂器後將其餘音訊合成單一 WAV；也可貼上公開音訊網址，下載後加入處理佇列。
 
-[下載 Windows x64 安裝程式](https://github.com/jiun264/StemStudioRelease/releases/download/v0.1.0/StemStudio-Setup.exe) · [查看 v0.1.0 發布資訊](https://github.com/jiun264/StemStudioRelease/releases/tag/v0.1.0)
+[下載 Windows x64 安裝程式](https://github.com/jiun264/StemStudioRelease/releases/download/v0.2.0/StemStudio-Setup.exe) · [查看 v0.2.0 發布資訊](https://github.com/jiun264/StemStudioRelease/releases/tag/v0.2.0)
 
 > 這是作品集與安裝程式下載頁。**原始碼未公開，也不包含在此 repository 或 Release 中。**
 
 ## 專案簡介
 
-StemStudio 是一個以 WPF 建構的 Windows 桌面應用程式，將音訊匯入、來源分離和結果輸出串成單一工作流程。使用者可拖放／選取音訊檔，或貼上支援的公開 HTTP(S) 網址；下載完成後可選擇輸出的人聲、吉他、貝斯與鼓音軌。
+StemStudio 是一個以 WPF 建構的 Windows 桌面應用程式，將音訊匯入、來源分離和結果輸出串成單一工作流程。使用者可拖放／選取音訊檔，或貼上支援的公開 HTTP(S) 網址；可分別輸出人聲、吉他、貝斯、鼓、鋼琴，或選擇一種樂器移除並輸出其餘音訊的混音檔。
 
 ## 功能
 
 - 支援 WAV、MP3、FLAC、M4A、OGG、WMA、AAC 輸入格式。
-- 以 Demucs `htdemucs_6s` 模型進行四種來源分離，輸出 WAV。
+- 以 Demucs `htdemucs_6s` 模型進行人聲、吉他、貝斯、鼓、鋼琴來源分離，輸出 WAV。
+- 可選擇移除單一樂器，將其餘來源合成一個 WAV 檔。
 - 透過 yt-dlp 取得支援來源的音訊，並由 FFmpeg 轉成 MP3。
 - 支援多檔案佇列、狀態回報及取消工作。
 - 隨安裝包提供私有 CPython runtime 與 CPU 版 PyTorch，使用者不必另外安裝 Python 或 CUDA。
@@ -32,7 +33,7 @@ StemStudio 是一個以 WPF 建構的 Windows 桌面應用程式，將音訊匯�
 ```text
 WPF App → .NET Infrastructure → .NET Worker → Python worker
                                                 ├─ yt-dlp → FFmpeg → MP3
-                                                └─ Demucs + PyTorch → WAV stems
+                                                └─ Demucs + PyTorch → WAV stems / mix
 ```
 
 ## 工程設計
@@ -52,10 +53,10 @@ WPF App → .NET Infrastructure → .NET Worker → Python worker
 
 ## 下載與驗證
 
-- **版本：** 0.1.0
+- **版本：** 0.2.0
 - **平台：** Windows x64
 - **安裝檔：** [`StemStudio-Setup.exe`](https://github.com/jiun264/StemStudioRelease/releases/download/v0.1.0/StemStudio-Setup.exe)
-- **SHA-256：** `710788D364426EA10C58EBA647C0DD5E7ABFDD13D4C6AE751107A71E6BB64A53`
+- **SHA-256：** `0F61C6F545EF63D484B0F468E9B64ACB7DA57BAE4DB540568D1A5D7F475B3BEA`
 
 下載後可在 PowerShell 驗證檔案：
 
